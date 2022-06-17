@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/png">
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
@@ -19,7 +21,7 @@
     <!-- Header -->
     <div class="header-container">
         <div class="header-content">
-            <img src="{{asset('logo.svg')}}" alt="logo dt money"/>
+            <img src="{{asset('logo-white.svg')}}" alt="logo dt money"/>
             <button type="button" data-bs-toggle="modal" data-bs-target="#newTransactionModal">
                 Nova transação
             </button>
