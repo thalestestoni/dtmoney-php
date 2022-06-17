@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/newTransactionModal.js": "/js/newTransactionModal.js",
     "/css/newTransactionModal.css": "/css/newTransactionModal.css",
     "/css/dashboard.css": "/css/dashboard.css",
     "/css/header.css": "/css/header.css",
