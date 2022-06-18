@@ -21,8 +21,8 @@
             <div class="d-flex justify-content-center">
                 <img src="{{asset('logo-black.svg')}}" alt="logo dt money"/>
             </div>
-            <form>
-                <input type="text" placeholder="Login" value="">
+            <form action="{{ url('/transactions') }}">
+                <input type="text" placeholder="Email" value="">
                 <input type="password" placeholder="Senha" value="">
 
                 <button type="submit">Entrar</button>

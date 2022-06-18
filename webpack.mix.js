@@ -5,4 +5,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/css/header.scss', 'public/css')
     .sass('resources/css/dashboard.scss', 'public/css')
     .sass('resources/css/newTransactionModal.scss', 'public/css')
-    .sass('resources/css/signin.scss', 'public/css');
+    .sass('resources/css/signin.scss', 'public/css')
+    .sass('resources/css/signup.scss', 'public/css');
