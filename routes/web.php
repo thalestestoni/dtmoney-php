@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SigninController::class, 'signin']);
 
 Route::get('/signup', [SignupController::class, 'index'])->name('signup.index');
-Route::post('/signup', [SignupController::class, 'store'])->name('signup.store');
+Route::post('/signup', [SignupController::class, 'store'])->name('signup');
 
 Route::resource('transactions', TransactionsController::class);
