@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class SignupController extends Controller
 {
-    public function signup() {
+    public function index() {
         return view ('signup');
+    }
+
+    public function store(Request $request) {
+        $name = $request->name;
+
+        // TODO
     }
 }
