@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SigninController::class, 'signin']);
 
-Route::get('/signup', [SignupController::class, 'signup']);
+Route::get('/signup', [SignupController::class, 'index'])->name('signup.index');
+Route::post('/signup', [SignupController::class, 'store'])->name('signup.store');
 
-Route::get('/transactions', [TransactionsController::class, 'index']);
-Route::post('/transactions', [TransactionsController::class, '']);
+Route::resource('transactions', TransactionsController::class);
