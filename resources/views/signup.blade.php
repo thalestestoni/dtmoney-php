@@ -18,6 +18,7 @@
 <body>
     <div class="vh-100 d-flex p-4 justify-content-center align-items-center signup">
         <h1 class="pr-2">Criar sua conta do dtmoney</h1>
+
         <div class="d-flex flex-column singup-form-container">
             <img src="{{asset('logo-black.svg')}}" alt="logo dt money"/>
             <form action="{{ url('/transactions') }}">

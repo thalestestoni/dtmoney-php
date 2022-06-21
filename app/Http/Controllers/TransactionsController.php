@@ -10,11 +10,5 @@ class TransactionsController extends Controller
         return view('transactions');
     }
 
-    public function signin() {
-        return view ('signin');
-    }
 
-    public function signup() {
-        return view ('signup');
-    }
 }
