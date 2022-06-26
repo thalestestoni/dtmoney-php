@@ -9,6 +9,8 @@ class TypeTransaction extends Model
 {
     use HasFactory;
 
+    protected $timestamps = false;
+
     public function transactions() {
         return $this->hasMany(Transaction::class);
     }

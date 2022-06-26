@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
-use App\Models\User;
-use App\Models\TypeTransaction;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class TransactionsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        // $transactions = Transaction::all();
-
-        return view('transactions.index');
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class TransactionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -39,21 +35,15 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        $transactionData = $request->all();
+        $userData = $request->all();
 
-        $userId = 1;
-        $user = User::find($userId);
+        if ($userData['password'] !== $userData['passwordConfirmation']) {
+            //TODO
+        }
 
-        $typeTransactionId = 1;
-        $typeTransaction = TypeTransaction::find($typeTransactionId);
+        User::create($userData);
 
-        $transaction = new Transaction();
-        $transaction->amount = $transactionData['amount'];
-
-        $transaction->user()->associate($user);
-        $transaction->type()->associate($typeTransaction);
-
-        //TODO
+        return redirect()->to(route('transactions.index'));
     }
 
     /**

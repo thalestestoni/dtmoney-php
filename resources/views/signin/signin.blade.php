@@ -27,7 +27,7 @@
 
                 <button type="submit">Entrar</button>
 
-                <p>Não tem uma conta? <a href="{{ url('/signup') }}">Crie agora</a></p>
+                <p>Não tem uma conta? <a href="{{ route('users.create') }}">Crie agora</a></p>
             </form>
         </div>
     </div>

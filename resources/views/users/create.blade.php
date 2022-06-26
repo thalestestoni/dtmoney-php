@@ -21,12 +21,12 @@
 
         <div class="d-flex flex-column singup-form-container">
             <img src="{{asset('logo-black.svg')}}" alt="logo dt money"/>
-            <form action="{{ route('signup') }}" method="POST" onsubmit="signup(this)">
+            <form action="{{ route('users.store') }}" method="POST" onsubmit="signup(this)">
                 {!! csrf_field() !!}
-                <input type="text" placeholder="Nome" value="">
-                <input type="text" placeholder="Email" value="">
-                <input type="password" placeholder="Senha" value="">
-                <input type="password" placeholder="Confirmar senha" value="">
+                <input type="text" name="name" placeholder="Nome" maxlength="100">
+                <input type="text" name="email" placeholder="Email" maxlength="100">
+                <input type="password" name="password" placeholder="Senha" maxlength="100">
+                <input type="password" name="passwordConfirmation" placeholder="Confirmar senha" maxlength="100">
 
                 <button type="submit">Criar</button>
             </form>
