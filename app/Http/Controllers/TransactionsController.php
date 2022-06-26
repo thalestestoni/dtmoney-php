@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use App\Models\User;
-use App\Models\TypeTransaction;
+use App\Models\TransactionType;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -14,11 +14,20 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $transactions = Transaction::all();
+        //TODO: Transferir o código sessionHasNoUser para um middleware
+        $sessionHasNoUser = !$request->session()->has('user');
 
-        return view('transactions.index');
+        if ($sessionHasNoUser) {
+            return redirect()->to(route('signin'));
+        }
+
+        $user = $request->session()->get('user');
+
+        $transactions = Transaction::where('user_id', $user['id'])->get();
+
+        return view('transactions.index', compact('transactions'));
     }
 
     /**
@@ -39,21 +48,28 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: Validate session with middleware
+
         $transactionData = $request->all();
 
-        $userId = 1;
+        $userId = $request->session()->get('user')['id'];
         $user = User::find($userId);
 
-        $typeTransactionId = 1;
-        $typeTransaction = TypeTransaction::find($typeTransactionId);
+        //TODO: Validate if user exists
+
+        $transactionTypeId = 1;
+        $transactionType = TransactionType::find($transactionTypeId);
 
         $transaction = new Transaction();
+        $transaction->title = $transactionData['title'];
         $transaction->amount = $transactionData['amount'];
 
         $transaction->user()->associate($user);
-        $transaction->type()->associate($typeTransaction);
+        $transaction->type()->associate($transactionType);
 
-        //TODO
+        $transaction->save();
+
+        return redirect()->to(route('transactions.index'));
     }
 
     /**

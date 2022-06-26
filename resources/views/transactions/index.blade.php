@@ -64,18 +64,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Desenvolvimento de site</td>
-                        <td class="deposit">R$ 500,00</td>
-                        <td>Venda</td>
-                        <td>16/06/2022</td>
-                    </tr>
-                    <tr>
+                    @foreach($transactions as $transaction)
+                        <tr>
+                            <td><?php echo $transaction->title; ?></td>
+                            <td class="">R$ <?php echo $transaction->amount; ?></td>
+                            <td>Venda</td>
+                            <td><?php echo $transaction->created_at; ?></td>
+                        </tr>
+                    @endforeach
+
+                    <!-- <tr>
                         <td>Desenvolvimento de site</td>
                         <td class="withdraw">R$ 500,00</td>
                         <td>Venda</td>
                         <td>16/06/2022</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -100,18 +103,20 @@
                         <img src="{{asset('botao-fechar.svg')}}" alt="Fechar modal"/>
                     </button>
 
-                    <form>
+                    <form action="{{ route('transactions.store') }}" method="POST">
+                        {!! csrf_field() !!}
                         <h2>Cadastrar transação</h2>
 
                         <input
+                            type="text"
                             placeholder="Título"
-                            value=""
+                            name="title"
                         />
 
                         <input
                             type="number"
                             placeholder="Valor"
-                            value=""
+                            name="amount"
                         />
 
                         <div class="transaction-type">
@@ -138,8 +143,9 @@
                         </div>
 
                         <input
+                            type="text"
                             placeholder="Categoria"
-                            value=""
+                            name="category"
                         />
 
                         <button type="submit">

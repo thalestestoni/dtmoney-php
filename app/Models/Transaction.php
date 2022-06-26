@@ -9,10 +9,9 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $timestamps = false;
-
     protected $fillable = [
-
+        'title',
+        'amount'
     ];
 
     public function user() {
@@ -20,6 +19,6 @@ class Transaction extends Model
     }
 
     public function type(){
-        return $this->belongsTo(TypeTransaction::class);
+        return $this->belongsTo(TransactionType::class);
     }
 }

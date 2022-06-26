@@ -41,7 +41,9 @@ class UserController extends Controller
             //TODO
         }
 
-        User::create($userData);
+        $user = User::create($userData);
+
+        $request->session()->put('user', ['id' => $user->id]);
 
         return redirect()->to(route('transactions.index'));
     }
